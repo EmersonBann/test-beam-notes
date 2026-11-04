@@ -4,10 +4,10 @@
 ## The problem: reco run at different times gave different PE per hit levels for the same data
 
 **Production reco / re-reco done locally last week:**
-![](../attachments/T12_protons_ratio_pe_vs_event_order%201.png)
+![](T12_protons_ratio_pe_vs_event_order%201.png)
 
 **Re-reco done locally in Oct / Re-reco done locally last week:**
-![](../attachments/T12_protons_ratio_oct_over_nov_vs_event_order.png)
+![](T12_protons_ratio_oct_over_nov_vs_event_order.png)
 
 1. Production "reco"
 	* Run in many jobs so I think that's what's resulted in a mixture of high and low PE levels throughout the period (4) of data
@@ -24,12 +24,12 @@
 3. PE = pulse height / (ADC per PE)
 
 **Ideal pulse shapes for both FEB types:**
-![](../attachments/pulse_shapes.png)
+![](pulse_shapes.png)
 
 **Fake ADC signals to show how the pulse heights would be too high or too low if the wrong `peak` was used:**
-![](../attachments/feb52_hit_with_feb41_peak.png)
+![](feb52_hit_with_feb41_peak.png)
 
-![](../attachments/feb41_hit_with_feb52_peak.png)
+![](feb41_hit_with_feb52_peak.png)
 * 0.8984 factor is the exact ones I found when taking the ratio of PE per hit between reco processings of the same events
 * Same events mean the `norm` values are the same, so they cancel, just leaving the ratio of the `peak` values
 
@@ -59,7 +59,7 @@ Looks like they were very close to getting it right for Test Beam [GetExpectatio
 * Need to dig into this still, but I expect the explanation is that these are hits that don't get a good pulse fit so the scaling isn't applied [see here](https://github.com/novaexperiment/novasoft/blob/a384dbc38d9d18feb3dfdae028770b39fa8b7daa/Calibrator/func/ADCShapeFit.cxx#L353)
 * See "flip the peak test" part 2 below
 
-![](../attachments/T12_protons_ratio_pe_hist.png)
+![](T12_protons_ratio_pe_hist.png)
 
 
 ---
@@ -431,11 +431,11 @@ The ratio is 0.8984 for every good-fit hit where the peak values are different. 
 * Fix the bug, and then re-run reco on some of the data, then make plots etc.
 * Fix for sim as well.
 * I also noticed the the sim FD-type rise time is [380 ns](https://github.com/novaexperiment/novasoft/blob/a384dbc38d9d18feb3dfdae028770b39fa8b7daa/Calibrator/func/ADCShapeFit.cxx#L278) whereas it's 460 ns for data, I haven't found explanation for this yet - I wanna know!
-* Once we're sure, share with whoever needs to know :scream: :sob:
+* Once we're sure, share with whoever needs to know :scream:
 * Fix and run reco again on all periods of data
 * Make sim
 
 
 ### Sim thing
 
-![](../attachments/pulse_shapes_mc.png)
+![](pulse_shapes_mc.png)
